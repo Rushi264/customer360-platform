@@ -1,0 +1,56 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# Environment variables
+.env
+.env.local
+
+# Data files (too large for GitHub)
+data/*.csv
+data/*.json
+
+# Keep folder structure but not large files
+!data/.gitkeep
+
+# Logs
+logs/
+*.log
+
+# Docker volumes (managed by Docker)
+postgres_data/
+minio_data/
+mlflow_data/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Airflow
+airflow.cfg
+airflow.db
+airflow-webserver.pid
+
+# Temporary files
+*.tmp
+*.bak
+~$*
