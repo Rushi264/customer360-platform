@@ -1,4 +1,5 @@
-﻿services:
+﻿version: '3.8'
+services:
   postgres:
     image: postgres:15
     container_name: customer360-postgres
@@ -17,7 +18,6 @@
       interval: 10s
       timeout: 5s
       retries: 5
-
   airflow:
     image: apache/airflow:latest
     container_name: customer360-airflow
@@ -34,7 +34,6 @@
     depends_on:
       postgres:
         condition: service_healthy
-
   kafka:
     image: confluentinc/cp-kafka:latest
     container_name: customer360-kafka
@@ -51,7 +50,6 @@
       - zookeeper
     networks:
       - custom_network
-
   zookeeper:
     image: confluentinc/cp-zookeeper:latest
     container_name: customer360-zookeeper
@@ -63,7 +61,6 @@
       - "2181:2181"
     networks:
       - custom_network
-
   redis:
     image: redis:alpine
     container_name: customer360-redis
@@ -71,7 +68,6 @@
       - "6379:6379"
     networks:
       - custom_network
-
   minio:
     image: minio/minio:latest
     container_name: customer360-minio
@@ -85,7 +81,6 @@
     networks:
       - custom_network
     command: server /data
-
   mlflow:
     image: ghcr.io/mlflow/mlflow:latest
     container_name: customer360-mlflow
@@ -96,7 +91,6 @@
     networks:
       - custom_network
     command: mlflow server --host 0.0.0.0
-
   metabase:
     image: metabase/metabase:latest
     container_name: customer360-metabase
@@ -122,13 +116,11 @@
       interval: 30s
       timeout: 10s
       retries: 5
-
 volumes:
   postgres_data:
   minio_data:
   mlflow_data:
   metabase_data:
-
 networks:
   custom_network:
     driver: bridge
